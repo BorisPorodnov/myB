@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="ru"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1">
+
+    <title>Админка | Бронирования</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <style>
+
+        body{
+            background:#f3f6f4;
+            font-family:'Segoe UI',sans-serif;
+        }
+
+        .header{
+            background:#163020;
+            color:white;
+            padding:30px;
+            border-radius:0 0 30px 30px;
+        }
+
+        .card-box{
+            background:white;
+            border-radius:25px;
+            padding:30px;
+            box-shadow:0 15px 40px rgba(0,0,0,.08);
+        }
+
+        thead{
+            background:#163020!important;
+            color:white;
+        }
+
+        tbody tr{
+            transition:.3s;
+        }
+
+        tbody tr:hover{
+            transform:scale(1.01);
+            background:#f1f8f3;
+        }
+
+        .status{
+            padding:8px 15px;
+            border-radius:50px;
+            font-weight:600;
+            display:inline-block;
+        }
+
+        .new{
+            background:#fff3cd;
+            color:#856404;
+        }
+
+        .confirmed{
+            background:#d1e7dd;
+            color:#0f5132;
+        }
+
+        .cancelled{
+            background:#f8d7da;
+            color:#842029;
+        }
+
+        .room{
+            background:#eef7ef;
+            padding:10px 15px;
+            border-radius:15px;
+            font-weight:600;
+            color:#163020;
+        }
+
+        .price{
+            color:#b8863c;
+            font-weight:700;
+            font-size:18px;
+        }
+
+        .total{
+            color:#198754;
+            font-size:20px;
+            font-weight:800;
+        }
+
+        .days{
+            font-weight:700;
+            color:#163020;
+        }
+
+        .btn{
+            border-radius:50px;
+        }
+
+        @media(max-width:900px){
+
+            .table{
+                font-size:14px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="header text-center">
+
+    <h1>
+        🏡 Админка "Лесной берег"
+    </h1>
+
+    <p class="mb-0">
+        Управление заявками гостей
+    </p>
+
+</div>
+
+
+<div class="container mt-5">
+
+    <div class="card-box">
+
+        <h2 class="mb-4">
+            📋 Заявки на бронирование
+        </h2>
+
+
+        <div class="table-responsive">
+
+            <table class="table table-hover align-middle">
+
+                <thead>
+
+                <tr>
+
+                    <th>Гость</th>
+
+                    <th>Телефон</th>
+
+                    <th>Номер</th>
+
+                    <th>Цена</th>
+
+                    <th>Дней</th>
+
+                    <th>Сумма</th>
+
+                    <th>Заезд</th>
+
+                    <th>Выезд</th>
+
+                    <th>Статус</th>
+
+                    <th>Действия</th>
+
+                </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                <tr th:each="booking : ${bookings}">
+
+
+                    <td>
+                        <b th:text="${booking.clientName}">
+                        </b>
+                    </td>
+
+
+                    <td th:text="${booking.phone}">
+                    </td>
+
+
+
+                    <td>
+
+                        <div class="room"
+                             th:if="${booking.room != null}">
+
+                            <span th:text="${booking.room.name}">
+                            </span>
+
+                            <br>
+
+                            👥
+
+                            <span th:text="${booking.room.capacity}">
+                            </span>
+
+                            мест
+
+                        </div>
+
+
+                        <span th:if="${booking.room == null}">
+                            —
+                        </span>
+
+                    </td>
+
+
+
+                    <td>
+
+                        <span class="price"
+                              th:if="${booking.room != null}">
+
+                            <span th:text="${booking.room.price}">
+                            </span>
+
+                            ₽
+
+                        </span>
+
+
+                        <span th:if="${booking.room == null}">
+                            —
+                        </span>
+
+                    </td>
+
+
+
+                    <td>
+
+                        <span class="days"
+                              th:if="${booking.room != null}"
+                              th:text="${T(java.time.temporal.ChronoUnit).DAYS.between(booking.dateFrom,booking.dateTo)}">
+
+                        </span>
+
+                        🌙
+
+                    </td>
+
+
+
+                    <td>
+
+                        <span class="total"
+                              th:if="${booking.room != null}"
+                              th:text="${booking.room.price *
+                              T(java.time.temporal.ChronoUnit).DAYS.between(booking.dateFrom,booking.dateTo)}">
+
+                        </span>
+
+                        ₽
+
+                    </td>
+
+
+
+                    <td th:text="${booking.dateFrom}">
+                    </td>
+
+
+                    <td th:text="${booking.dateTo}">
+                    </td>
+
+
+
+                    <td>
+
+                        <span class="status new"
+                              th:if="${booking.status.name()=='NEW'}">
+
+                            🕒 Новая
+
+                        </span>
+
+
+                        <span class="status confirmed"
+                              th:if="${booking.status.name()=='CONFIRMED'}">
+
+                            ✓ Подтверждена
+
+                        </span>
+
+
+                        <span class="status cancelled"
+                              th:if="${booking.status.name()=='CANCELLED'}">
+
+                            ✕ Отменена
+
+                        </span>
+
+                    </td>
+
+
+
+                    <td>
+
+                        <div th:if="${booking.status.name()=='NEW'}"
+                             class="d-flex gap-2">
+
+
+                            <form th:action="@{/admin/bookings/{id}/confirm(id=${booking.id})}"
+                                  method="post">
+
+                                <button class="btn btn-success btn-sm">
+
+                                    ✓
+
+                                </button>
+
+                            </form>
+
+
+
+                            <form th:action="@{/admin/bookings/{id}/cancel(id=${booking.id})}"
+                                  method="post">
+
+                                <button class="btn btn-danger btn-sm">
+
+                                    ✕
+
+                                </button>
+
+                            </form>
+
+
+                        </div>
+
+
+                        <span class="text-muted"
+                              th:if="${booking.status.name()!='NEW'}">
+
+                            обработано
+
+                        </span>
+
+
+                    </td>
+
+
+                </tr>
+
+
+                </tbody>
+
+
+            </table>
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+</body>
+
+</html>
