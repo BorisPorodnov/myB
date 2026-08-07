@@ -1,265 +1,404 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Гостевой дом "Лесной берег"</title>
+    <title>Luna Beauty | Маникюр и педикюр</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
-
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
-
 
     <style>
 
         body{
             font-family:'Segoe UI',sans-serif;
-            background:#f5f7f6;
+            background:#faf7f5;
+            color:#3b2430;
         }
 
-
-        /* HERO */
-
         .hero{
-
             height:100vh;
-
             background:
-                    linear-gradient(
-                            rgba(0,0,0,.45),
-                            rgba(0,0,0,.55)
-                    ),
-                    url("https://images.unsplash.com/photo-1449158743715-0a90ebb6d2d8")
+                    linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.6)),
+                    url("https://images.unsplash.com/photo-1560066984-138dadb4c035")
                     center/cover;
 
             display:flex;
             align-items:center;
             color:white;
-
-            position:relative;
-
         }
-
-
-        .scroll-down{
-
-            position:absolute;
-
-            bottom:30px;
-
-            left:50%;
-
-            transform:translateX(-50%);
-
-            color:white;
-
-            font-size:18px;
-
-            text-align:center;
-
-            animation:bounce 2s infinite;
-
-        }
-
-
-        @keyframes bounce{
-
-            0%,100%{
-                transform:translate(-50%,0);
-            }
-
-            50%{
-                transform:translate(-50%,15px);
-            }
-
-        }
-
-
 
         .btn-main{
-
-            background:#d6a354;
+            background:#d47b9b;
             border:none;
             padding:18px 50px;
             border-radius:50px;
             font-size:20px;
-
+            color:white;
         }
-
 
         .btn-main:hover{
-
-            background:#b8863c;
-
+            background:#b85f80;
         }
-
-
-
-        /* glass cards */
-
 
         .glass{
-
-            background:
-                    rgba(255,255,255,.75);
-
-            backdrop-filter:blur(10px);
-
-            border-radius:25px;
-
-            box-shadow:
-                    0 20px 40px rgba(0,0,0,.1);
-
+            background:rgba(255,255,255,.85);
+            backdrop-filter:blur(12px);
+            border-radius:30px;
+            box-shadow:0 20px 40px rgba(0,0,0,.1);
         }
 
-
-
-        /* advantages */
-
-
-        .features{
-
+        .section{
             padding:90px 0;
-
         }
-
 
         .feature{
-
             padding:35px;
-
             text-align:center;
-
-            transition:.4s;
-
+            transition:.3s;
         }
-
 
         .feature:hover{
-
-            transform:translateY(-15px);
-
+            transform:translateY(-10px);
         }
-
 
         .feature span{
-
             font-size:60px;
-
         }
 
-
-
-        /* gallery */
-
-
         .gallery img{
-
             width:100%;
             height:280px;
             object-fit:cover;
             border-radius:25px;
-
-            transition:.4s;
-
         }
-
-
-        .gallery img:hover{
-
-            transform:scale(1.05);
-
-        }
-
-
-
-        /* reviews */
-
-
-        .review{
-
-            padding:30px;
-
-        }
-
-
-
-        /* contact */
-
 
         .contact{
+            background:#4b2435;
+            color:white;
+            padding:80px 0;
+        }
 
-            background:#163020;
+        .price{
+            color:#d47b9b;
+            font-weight:800;
+            font-size:22px;
+        }
+
+        .slot{
+            border-radius:50px;
+            padding:15px;
+            border:2px solid #d47b9b;
+            color:#b85f80;
+            font-weight:700;
+        }
+
+        .slot:hover{
+            background:#d47b9b;
+            color:white;
+        }
+
+        .whatsapp{
+            position:fixed;
+            right:25px;
+            bottom:25px;
+
+            background:#25D366;
             color:white;
 
-            padding:80px 0;
+            padding:18px 30px;
 
+            border-radius:50px;
+
+            font-weight:700;
+            font-size:18px;
+
+            text-decoration:none;
+
+            box-shadow:0 15px 35px rgba(0,0,0,.3);
+
+            z-index:999;
+
+            transition:.3s;
         }
 
-
-
-        /* animation */
-
-        .fade{
-
-            animation:
-                    fadeInUp 1s;
-
+        .whatsapp:hover{
+            transform:translateY(-5px);
+            color:white;
         }
 
+        .before-after img{
+            height:350px;
+            width:100%;
+            object-fit:cover;
+            border-radius:30px;
+        }
 
     </style>
 
-
 </head>
-
 
 <body>
 
 
-
-<!-- HERO -->
-
-
 <section class="hero">
-
 
     <div class="container text-center">
 
 
-        <h1 class="animate__animated animate__fadeInDown">
+        <h1 class="display-3 fw-bold animate__animated animate__fadeInDown">
 
-            🏡 Гостевой дом
-            <br>
-            "Лесной берег"
+            💅 Luna Beauty
 
         </h1>
 
 
+        <h2 class="animate__animated animate__fadeInUp">
 
-        <p class="animate__animated animate__fadeInUp">
+            Маникюр • Педикюр • Покрытие
 
-            Отдых среди природы.
-            <br>
-            Уют, тишина и настоящее восстановление.
+        </h2>
+
+
+        <p class="lead mt-4">
+
+            Красивые руки каждый день.<br>
+            Аккуратный уход и стойкое покрытие.
 
         </p>
 
 
-
         <a href="/booking"
-           class="btn btn-main shadow animate__animated animate__zoomIn">
+           class="btn btn-main mt-4 shadow">
 
-            Забронировать
+            Записаться
 
         </a>
-        <div class="scroll-down">
 
-            ↓
-            <br>
-            Узнать больше
+
+    </div>
+
+</section>
+
+
+<section class="section">
+
+    <div class="container">
+
+
+        <h2 class="text-center fw-bold mb-5">
+
+            Наши услуги
+
+        </h2>
+
+
+        <div class="row g-4">
+
+
+            <div class="col-md-4">
+
+                <div class="glass feature">
+
+                    <span>💅</span>
+
+                    <h3>
+
+                        Маникюр
+
+                    </h3>
+
+                    <p>
+
+                        Форма ногтей, уход за кутикулой, красивый дизайн.
+
+                    </p>
+
+                    <div class="price">
+
+                        от 1200 ₽
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="col-md-4">
+
+                <div class="glass feature">
+
+                    <span>🦶</span>
+
+                    <h3>
+
+                        Педикюр
+
+                    </h3>
+
+                    <p>
+
+                        Уход за стопами, аккуратность и комфорт.
+
+                    </p>
+
+                    <div class="price">
+
+                        от 1800 ₽
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="col-md-4">
+
+                <div class="glass feature">
+
+                    <span>✨</span>
+
+                    <h3>
+
+                        Покрытие
+
+                    </h3>
+
+                    <p>
+
+                        Гель-лак, укрепление и стойкий результат.
+
+                    </p>
+
+                    <div class="price">
+
+                        от 1500 ₽
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+<section class="section">
+
+    <div class="container">
+
+
+        <h2 class="text-center fw-bold mb-5">
+
+            Работы мастера ✨
+
+        </h2>
+
+
+        <div class="row g-4 gallery">
+
+
+            <div class="col-md-4">
+
+                <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371">
+
+            </div>
+
+
+            <div class="col-md-4">
+
+                <img src="https://images.unsplash.com/photo-1610992015732-2449b76344bc">
+
+            </div>
+
+
+            <div class="col-md-4">
+
+                <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e">
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<section class="section">
+
+
+    <div class="container">
+
+
+        <h2 class="text-center fw-bold mb-5">
+
+            До / После 🔥
+
+        </h2>
+
+
+
+        <div class="row g-4 before-after">
+
+
+
+            <div class="col-md-6">
+
+
+                <div class="glass p-3">
+
+
+                    <h4 class="text-center">
+
+                        До
+
+                    </h4>
+
+
+                    <img src="https://images.unsplash.com/photo-1610992015732-2449b76344bc">
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="col-md-6">
+
+
+                <div class="glass p-3">
+
+
+                    <h4 class="text-center">
+
+                        После
+
+                    </h4>
+
+
+                    <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371">
+
+
+                </div>
+
+
+            </div>
+
+
 
         </div>
 
@@ -271,12 +410,7 @@
 
 
 
-
-
-<!-- FEATURES -->
-
-
-<section class="features">
+<section class="section">
 
 
     <div class="container">
@@ -284,7 +418,7 @@
 
         <h2 class="text-center fw-bold mb-5">
 
-            Почему выбирают нас?
+            Отзывы клиентов ⭐
 
         </h2>
 
@@ -294,126 +428,100 @@
 
 
 
-            <div class="col-md-3">
-
-                <a href="/rooms" class="text-decoration-none text-dark">
-                    <div class="glass feature">
-                        <span>🏡</span>
-                        <h4>
-                            Уютные номера
-                        </h4>
-                        <p>
-                            Комфортные комнаты с красивым видом.
-                        </p>
-                    </div>
-
-                </a>
-
-            </div>
+            <div class="col-md-4">
 
 
+                <div class="glass p-4">
 
-            <div class="col-md-3">
 
-                <div class="glass feature">
+                    ⭐⭐⭐⭐⭐
 
-                    <span>🌲</span>
-
-                    <h4>
-                        Природа
-                    </h4>
 
                     <p>
-                        Лес, свежий воздух и тишина.
+
+                        Очень аккуратно сделали маникюр.
+                        Покрытие держится идеально.
+
                     </p>
+
+
+                    <b>
+
+                        Анна
+
+                    </b>
+
 
                 </div>
 
+
             </div>
 
 
 
-            <div class="col-md-3">
 
-                <div class="glass feature">
+            <div class="col-md-4">
 
-                    <span>🔥</span>
 
-                    <h4>
-                        Баня
-                    </h4>
+                <div class="glass p-4">
+
+
+                    ⭐⭐⭐⭐⭐
+
 
                     <p>
-                        Настоящая русская парная.
+
+                        Красивый салон, приятный мастер.
+                        Обязательно вернусь.
+
                     </p>
+
+
+                    <b>
+
+                        Мария
+
+                    </b>
+
 
                 </div>
 
+
             </div>
 
 
 
-            <div class="col-md-3">
 
-                <div class="glass feature">
+            <div class="col-md-4">
 
-                    <span>🚗</span>
 
-                    <h4>
-                        Парковка
-                    </h4>
+                <div class="glass p-4">
+
+
+                    ⭐⭐⭐⭐⭐
+
 
                     <p>
-                        Безопасное место для автомобиля.
+
+                        Педикюр сделали просто отлично.
+                        Очень довольна.
+
                     </p>
+
+
+                    <b>
+
+                        Елена
+
+                    </b>
+
 
                 </div>
 
+
             </div>
 
 
-
-        </div>
-
-    </div>
-
-
-</section>
-
-
-
-
-
-
-
-<!-- GALLERY -->
-
-
-<section class="container py-5">
-
-
-    <h2 class="text-center fw-bold mb-5">
-
-        Фотографии
-
-    </h2>
-
-
-    <div class="row g-4 gallery">
-
-
-        <div class="col-md-4">
-            <img src="https://images.unsplash.com/photo-1510798831971-661eb04b3739">
-        </div>
-
-
-        <div class="col-md-4">
-            <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85">
-        </div>
-
-
-        <div class="col-md-4">
-            <img src="https://images.unsplash.com/photo-1449158743715-0a90ebb6d2d8">
         </div>
 
 
@@ -425,133 +533,176 @@
 
 
 
-
-
-
-<!-- REVIEWS -->
-
-
-<section class="container py-5">
-
-
-    <h2 class="text-center fw-bold mb-5">
-
-        Отзывы гостей ⭐
-
-    </h2>
-
-
-
-    <div class="row g-4">
-
-
-        <div class="col-md-4">
-
-            <div class="glass review">
-
-                ⭐⭐⭐⭐⭐
-
-                <p>
-                    "Отличное место!
-                    Очень тихо и уютно."
-                </p>
-
-                <b>
-                    Анна
-                </b>
-
-            </div>
-
-        </div>
-
-
-
-
-        <div class="col-md-4">
-
-            <div class="glass review">
-
-                ⭐⭐⭐⭐⭐
-
-                <p>
-                    "Баня просто супер.
-                    Вернёмся ещё!"
-                </p>
-
-                <b>
-                    Сергей
-                </b>
-
-            </div>
-
-        </div>
-
-
-
-
-
-        <div class="col-md-4">
-
-            <div class="glass review">
-
-                ⭐⭐⭐⭐⭐
-
-                <p>
-                    "Красивое место среди природы."
-                </p>
-
-                <b>
-                    Мария
-                </b>
-
-            </div>
-
-        </div>
-
-
-
-    </div>
-
-
-</section>
-
-
-
-
-
-
-
-
-<!-- CONTACT -->
-
-
-<section class="contact text-center">
+<section class="section">
 
 
     <div class="container">
 
 
-        <h2>
-            Свяжитесь с нами
+        <div class="glass p-5 text-center">
+
+
+            <h2 class="fw-bold">
+
+                🕒 Свободные окна
+
+            </h2>
+
+
+            <p class="fs-5">
+
+                Ближайшая запись:
+
+            </p>
+
+
+
+            <div class="row g-3 mt-3">
+
+
+
+                <div class="col-md-4">
+
+
+                    <div class="slot">
+
+                        Сегодня 15:00
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="col-md-4">
+
+
+                    <div class="slot">
+
+                        Сегодня 18:00
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="col-md-4">
+
+
+                    <div class="slot">
+
+                        Завтра 12:00
+
+                    </div>
+
+
+                </div>
+
+
+
+            </div>
+
+
+            <a href="/booking"
+               class="btn btn-main mt-5">
+
+                Выбрать время
+
+            </a>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+
+<section class="section">
+
+
+    <div class="container">
+
+
+        <h2 class="text-center fw-bold mb-5">
+
+            📍 Мы на карте
+
         </h2>
 
 
-        <p class="fs-5">
+
+        <iframe
+
+                src="https://yandex.ru/map-widget/v1/?um=constructor"
+
+                width="100%"
+
+                height="400"
+
+                frameborder="0"
+
+                style="border-radius:30px">
+
+        </iframe>
+
+
+    </div>
+
+
+</section>
+<section class="contact">
+
+    <div class="container text-center">
+
+
+        <h2 class="fw-bold">
+
+            Запишитесь на процедуру 💅
+
+        </h2>
+
+
+        <p class="fs-4 mt-4">
 
             📞 +7 (999) 000-00-00
 
             <br>
 
-            📍 Московская область, лесная зона
+            📍 Ваш город
 
         </p>
 
 
 
         <a href="/booking"
-           class="btn btn-warning btn-lg rounded-pill px-5">
+           class="btn btn-light btn-lg rounded-pill px-5 mt-3">
 
-            Забронировать сейчас
+            Записаться онлайн
+
+        </a>
+
+
+
+        <p class="mt-5 mb-3">
+
+            © 2026 Студия красоты Luna
+
+        </p>
+
+
+
+        <a href="/admin"
+           class="btn btn-outline-light rounded-pill px-4">
+
+            🔐 Админка
 
         </a>
 
@@ -564,25 +715,18 @@
 
 
 
+<a href="https://wa.me/79990000000"
+   class="whatsapp">
+
+    💬 WhatsApp
+
+</a>
 
 
 
-
-<footer class="text-center py-4">
-
-    © 2026 Гостевой дом "Лесной берег"
-
-</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 
 
-<div class="text-center mt-5">
-
-    <a href="/admin"
-       class="btn btn-dark"
-       style="border-radius:50px;padding:12px 30px;">
-        🔐 Админка
-    </a>
-
-</div>
 </body>
+
 </html>

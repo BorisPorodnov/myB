@@ -1,7 +1,7 @@
-package com.booking.booking_mvp.controller;
+package com.beauty.booking_mvp.controller;
 
-import com.booking.booking_mvp.entity.Booking;
-import com.booking.booking_mvp.service.BookingService;
+import com.beauty.booking_mvp.entity.Booking;
+import com.beauty.booking_mvp.service.BookingService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;

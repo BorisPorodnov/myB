@@ -1,7 +1,6 @@
-package com.booking.booking_mvp.controller;
+package com.beauty.booking_mvp.controller;
 
-import com.booking.booking_mvp.entity.Booking;
-import com.booking.booking_mvp.repository.RoomRepository;
+import com.beauty.booking_mvp.entity.Booking;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -12,26 +11,21 @@ import org.springframework.web.bind.annotation.GetMapping;
 @RequiredArgsConstructor
 public class PageController {
 
-    private final RoomRepository roomRepository;
-
 
     @GetMapping("/")
     public String index(){
+
         return "index";
+
     }
 
 
     @GetMapping("/booking")
-    public String booking(Model model){
-
-        model.addAttribute(
-                "rooms",
-                roomRepository.findAll()
-        );
+    public String booking(){
 
         return "booking";
-    }
 
+    }
 
     @GetMapping("/thank-you")
     public String thankYou(
@@ -50,6 +44,7 @@ public class PageController {
 
 
         return "thank-you";
+
     }
 
 }

@@ -1,4 +1,4 @@
-package com.booking.booking_mvp;
+package com.beauty.booking_mvp;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

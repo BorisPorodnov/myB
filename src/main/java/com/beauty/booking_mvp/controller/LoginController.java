@@ -1,4 +1,4 @@
-package com.booking.booking_mvp.controller;
+package com.beauty.booking_mvp.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

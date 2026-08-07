@@ -1,68 +1,83 @@
-package com.booking.booking_mvp.config;
+package com.beauty.booking_mvp.config;
 
-import com.booking.booking_mvp.booking.Room;
-import com.booking.booking_mvp.repository.RoomRepository;
+import com.beauty.booking_mvp.service.ServiceItem;
+import com.beauty.booking_mvp.repository.ServiceItemRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 @Component
 public class DataInitializer implements CommandLineRunner {
 
-    private final RoomRepository roomRepository;
+    private final ServiceItemRepository repository;
 
-    public DataInitializer(RoomRepository roomRepository){
-        this.roomRepository = roomRepository;
+    public DataInitializer(ServiceItemRepository repository){
+        this.repository=repository;
     }
 
-
     @Override
-    public void run(String... args) {
+    public void run(String... args){
 
-        if(roomRepository.count() == 0){
+        if(repository.count()==0){
 
-            Room standard = new Room();
-
-            standard.setName("🌿 Стандарт");
-            standard.setDescription(
-                    "Уютный номер для спокойного отдыха среди природы"
+            ServiceItem manicure=new ServiceItem();
+            manicure.setName("💅 Маникюр");
+            manicure.setDescription(
+                    "Аккуратная обработка ногтей и уход за руками"
             );
-            standard.setPrice(2500);
-            standard.setCapacity(2);
-            standard.setImage(
-                    "https://images.unsplash.com/photo-1510798831971-661eb04b3739"
+            manicure.setPrice(1200);
+            manicure.setImage(
+                    "https://images.unsplash.com/photo-1604654894610-df63bc536371"
             );
-            standard.setAvailable(true);
 
-            Room family = new Room();
 
-            family.setName("🌲 Семейный");
-            family.setDescription(
-                    "Просторный номер для семьи с красивым видом"
+            ServiceItem pedicure=new ServiceItem();
+            pedicure.setName("🦶 Педикюр");
+            pedicure.setDescription(
+                    "Уход за стопами и красивое покрытие ногтей"
             );
-            family.setPrice(4500);
-            family.setCapacity(4);
-            family.setImage(
-                    "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85"
+            pedicure.setPrice(1800);
+            pedicure.setImage(
+                    "https://images.unsplash.com/photo-1519014816548-bf5fe059798b"
             );
-            family.setAvailable(true);
 
 
-
-            Room luxury = new Room();
-
-            luxury.setName("🔥 Люкс с баней");
-            luxury.setDescription(
-                    "Премиальный номер с собственной баней"
+            ServiceItem coating=new ServiceItem();
+            coating.setName("✨ Маникюр + покрытие");
+            coating.setDescription(
+                    "Гель-лак, ровное покрытие и красивый дизайн"
             );
-            luxury.setPrice(7000);
-            luxury.setCapacity(6);
-            luxury.setImage(
-                    "https://images.unsplash.com/photo-1449158743715-0a90ebb6d2d8"
+            coating.setPrice(2000);
+            coating.setImage(
+                    "https://images.unsplash.com/photo-1610992015732-2449b76344bc"
             );
-            luxury.setAvailable(true);
-            roomRepository.save(standard);
-            roomRepository.save(family);
-            roomRepository.save(luxury);
+
+
+            ServiceItem design=new ServiceItem();
+            design.setName("🎨 Дизайн ногтей");
+            design.setDescription(
+                    "Авторский дизайн, рисунки и декор"
+            );
+            design.setPrice(500);
+            design.setImage(
+                    "https://images.unsplash.com/photo-1607779097040-26e80aa78e66"
+            );
+
+
+            ServiceItem strengthening=new ServiceItem();
+            strengthening.setName("💎 Укрепление ногтей");
+            strengthening.setDescription(
+                    "Укрепление базой и восстановление ногтей"
+            );
+            strengthening.setPrice(1500);
+            strengthening.setImage(
+                    "https://images.unsplash.com/photo-1610992015732-2449b76344bc"
+            );
+
+            repository.save(manicure);
+            repository.save(pedicure);
+            repository.save(coating);
+            repository.save(design);
+            repository.save(strengthening);
         }
     }
 }

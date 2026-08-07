@@ -1,7 +1,6 @@
-package com.booking.booking_mvp.entity;
+package com.beauty.booking_mvp.entity;
 
-import com.booking.booking_mvp.booking.Room;
-import com.booking.booking_mvp.booking.Status;
+import com.beauty.booking_mvp.booking.Status;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -9,7 +8,7 @@ import java.time.LocalDate;
 
 @Entity
 @Data
-@Table(name = "bookings")
+@Table(name = "appointments")
 public class Booking {
 
     @Id
@@ -17,11 +16,9 @@ public class Booking {
     private Long id;
     private String clientName;
     private String phone;
-    private LocalDate dateFrom;
-    private LocalDate dateTo;
+    private String service;
+    private LocalDate date;
+    private String time;
     @Enumerated(EnumType.STRING)
     private Status status;
-    @ManyToOne
-    @JoinColumn(name = "room_id")
-    private Room room;
 }

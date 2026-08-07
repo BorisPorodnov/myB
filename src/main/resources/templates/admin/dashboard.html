@@ -1,259 +1,180 @@
 <!DOCTYPE html>
-<html lang="ru"
-      xmlns:th="http://www.thymeleaf.org">
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
 
 <head>
 
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1">
+    <title>Админка | Beauty Studio</title>
 
-    <title>
-        Админка | Лесной берег
-    </title>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
-          rel="stylesheet">
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
 
         body{
-            background:#f3f6f4;
+            background:#f8f5f5;
             font-family:'Segoe UI',sans-serif;
         }
 
-
         .header{
-
-            background:#163020;
+            background:#8b5e83;
             color:white;
             padding:35px;
             border-radius:0 0 30px 30px;
-
         }
 
-
         .card-box{
-
             background:white;
             border-radius:25px;
             padding:30px;
-            box-shadow:
-                    0 15px 40px rgba(0,0,0,.08);
-
+            box-shadow:0 15px 40px rgba(0,0,0,.08);
             transition:.3s;
-
         }
-
 
         .card-box:hover{
-
             transform:translateY(-5px);
-
         }
-
 
         .number{
-
             font-size:40px;
             font-weight:800;
-            color:#163020;
-
+            color:#8b5e83;
         }
-
 
         .title{
-
             color:#777;
             font-size:18px;
-
         }
-
 
         .icon{
-
             font-size:35px;
-
         }
-
 
         .btn{
-
             border-radius:50px;
             padding:12px 30px;
-
         }
-
 
     </style>
 
-
 </head>
-
 
 <body>
 
 
-<div class="header text-center">
+<div class="header mb-5">
 
+    <div class="container">
 
-    <h1>
+        <h1>
+            💅 Админка Beauty Studio
+        </h1>
 
-        🏡 Админка "Лесной берег"
+        <p class="mb-0">
+            Управление клиентами и записями
+        </p>
 
-    </h1>
-
-
-    <p class="mb-0">
-
-        Управление гостями, номерами и бронированиями
-
-    </p>
-
+    </div>
 
 </div>
 
 
 
-
-<div class="container mt-5">
+<div class="container">
 
 
     <div class="row g-4">
 
 
-
         <div class="col-md-3">
 
-
             <div class="card-box text-center">
-
 
                 <div class="icon">
                     📋
                 </div>
 
-
                 <div class="number"
                      th:text="${bookingsCount}">
+                    0
                 </div>
-
 
                 <div class="title">
-
-                    Заявки
-
+                    Всего записей
                 </div>
 
-
             </div>
-
 
         </div>
 
 
 
-
-
         <div class="col-md-3">
 
-
             <div class="card-box text-center">
-
 
                 <div class="icon">
                     🕒
                 </div>
 
-
                 <div class="number"
                      th:text="${newBookings}">
+                    0
                 </div>
-
 
                 <div class="title">
-
                     Новые
-
                 </div>
 
-
             </div>
-
 
         </div>
 
 
 
-
-
         <div class="col-md-3">
 
-
             <div class="card-box text-center">
-
 
                 <div class="icon">
                     ✅
                 </div>
 
-
                 <div class="number"
                      th:text="${finishedBookings}">
+                    0
                 </div>
-
 
                 <div class="title">
-
                     Подтверждены
-
                 </div>
-
 
             </div>
 
-
         </div>
-
-
 
 
 
         <div class="col-md-3">
 
-
             <div class="card-box text-center">
 
-
                 <div class="icon">
-                    💰
+                    ❌
                 </div>
-
 
                 <div class="number">
-
-                    <span th:text="${income}">
-                    </span>
-
-                    ₽
-
+                    0
                 </div>
-
 
                 <div class="title">
-
-                    Доход
-
+                    Отменены
                 </div>
-
 
             </div>
 
-
         </div>
-
 
 
     </div>
@@ -265,79 +186,69 @@
     <div class="row mt-5 g-4">
 
 
-
-        <div class="col-md-6">
-
+        <div class="col-md-12">
 
             <div class="card-box text-center">
 
 
                 <h3>
-
-                    📋 Бронирования
-
+                    📅 Записи клиентов
                 </h3>
 
 
                 <p class="text-muted">
-
-                    Просмотр и обработка заявок гостей
-
+                    Просмотр клиентов, услуг и времени записи
                 </p>
 
 
                 <a href="/admin/bookings"
-                   class="btn btn-success">
+                   class="btn btn-primary">
 
-                    Открыть заявки
+                    Открыть записи
 
                 </a>
 
 
             </div>
 
-
         </div>
 
 
+    </div>
 
 
 
 
-        <div class="col-md-6">
 
+    <div class="row mt-4">
+
+
+        <div class="col-md-12">
 
             <div class="card-box text-center">
 
 
                 <h3>
-
-                    🏡 Номера
-
+                    💅 Услуги салона
                 </h3>
 
 
                 <p class="text-muted">
-
-                    Добавление и редактирование номеров
-
+                    Маникюр, педикюр, ресницы, брови и другие услуги
                 </p>
 
 
-                <a href="/admin/rooms"
+                <a href="/admin/services"
                    class="btn btn-warning">
 
-                    Управление номерами
+                    Управление услугами
 
                 </a>
 
 
             </div>
 
-
         </div>
-
-
 
 
     </div>

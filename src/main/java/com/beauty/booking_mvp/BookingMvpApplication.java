@@ -1,4 +1,4 @@
-package com.booking.booking_mvp;
+package com.beauty.booking_mvp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

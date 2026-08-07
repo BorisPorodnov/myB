@@ -1,4 +1,4 @@
-package com.booking.booking_mvp.booking;
+package com.beauty.booking_mvp.booking;
 
 public enum Status {
     NEW,

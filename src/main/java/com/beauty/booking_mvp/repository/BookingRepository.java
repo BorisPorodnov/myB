@@ -1,6 +1,6 @@
-package com.booking.booking_mvp.repository;
+package com.beauty.booking_mvp.repository;
 
-import com.booking.booking_mvp.entity.Booking;
+import com.beauty.booking_mvp.entity.Booking;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface BookingRepository

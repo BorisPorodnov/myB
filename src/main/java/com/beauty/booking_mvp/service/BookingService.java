@@ -1,10 +1,8 @@
-package com.booking.booking_mvp.service;
+package com.beauty.booking_mvp.service;
 
-import com.booking.booking_mvp.booking.Room;
-import com.booking.booking_mvp.booking.Status;
-import com.booking.booking_mvp.entity.Booking;
-import com.booking.booking_mvp.repository.BookingRepository;
-import com.booking.booking_mvp.repository.RoomRepository;
+import com.beauty.booking_mvp.booking.Status;
+import com.beauty.booking_mvp.entity.Booking;
+import com.beauty.booking_mvp.repository.BookingRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -15,26 +13,14 @@ import java.util.List;
 public class BookingService {
 
     private final BookingRepository repository;
-    private final RoomRepository roomRepository;
 
     public Booking create(Booking booking) {
-        if(booking.getRoom() != null){
-            Long roomId =
-                    booking.getRoom().getId();
 
-            Room room =
-                    roomRepository
-                            .findById(roomId)
-                            .orElseThrow();
-
-
-            booking.setRoom(room);
-
-        }
         booking.setStatus(Status.NEW);
-        return repository.save(booking);
 
+        return repository.save(booking);
     }
+
 
     public List<Booking> findAll() {
 
@@ -42,24 +28,28 @@ public class BookingService {
 
     }
 
+
     public void confirm(Long id) {
 
         Booking booking =
-                repository
-                        .findById(id)
+                repository.findById(id)
                         .orElseThrow();
+
         booking.setStatus(Status.CONFIRMED);
+
         repository.save(booking);
 
     }
 
+
     public void cancel(Long id) {
 
         Booking booking =
-                repository
-                        .findById(id)
+                repository.findById(id)
                         .orElseThrow();
+
         booking.setStatus(Status.CANCELLED);
+
         repository.save(booking);
 
     }

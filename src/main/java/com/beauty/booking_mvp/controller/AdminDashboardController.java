@@ -1,13 +1,13 @@
-package com.booking.booking_mvp.controller;
+package com.beauty.booking_mvp.controller;
 
-import com.booking.booking_mvp.booking.Status;
-import com.booking.booking_mvp.service.BookingService;
-import com.booking.booking_mvp.service.RoomService;
+import com.beauty.booking_mvp.booking.Status;
+import com.beauty.booking_mvp.service.BookingService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.time.LocalDate;
 
 @Controller
 @RequiredArgsConstructor
@@ -15,7 +15,6 @@ public class AdminDashboardController {
 
 
     private final BookingService bookingService;
-    private final RoomService roomService;
 
 
 
@@ -23,70 +22,52 @@ public class AdminDashboardController {
     public String dashboard(Model model){
 
 
-        var bookings = bookingService.findAll();
-
+        var bookings =
+                bookingService.findAll();
 
         long totalBookings =
                 bookings.size();
 
-
-
         long newBookings =
                 bookings.stream()
-                        .filter(b -> b.getStatus() == Status.NEW)
+                        .filter(b ->
+                                b.getStatus()
+                                        == Status.NEW)
                         .count();
 
-
-
-        long finishedBookings =
+        long confirmedBookings =
                 bookings.stream()
                         .filter(b ->
-                                b.getStatus() == Status.CONFIRMED)
+                                b.getStatus()
+                                        == Status.CONFIRMED)
                         .count();
 
-
-
-        long income =
+        long todayBookings =
                 bookings.stream()
                         .filter(b ->
-                                b.getStatus() == Status.CONFIRMED)
-                        .mapToLong(b ->
-                                b.getRoom().getPrice()
-                        )
-                        .sum();
-
-
+                                b.getDate()
+                                        .equals(LocalDate.now()))
+                        .count();
 
         model.addAttribute(
                 "bookingsCount",
                 totalBookings
         );
 
-
         model.addAttribute(
                 "newBookings",
                 newBookings
         );
 
-
         model.addAttribute(
-                "finishedBookings",
-                finishedBookings
+                "confirmedBookings",
+                confirmedBookings
         );
 
-
         model.addAttribute(
-                "income",
-                income
+                "todayBookings",
+                todayBookings
         );
-
-
-        model.addAttribute(
-                "rooms",
-                roomService.findAll()
-        );
-
-
         return "admin/dashboard";
 
     }

@@ -1,6 +1,6 @@
-package com.booking.booking_mvp.controller;
+package com.beauty.booking_mvp.controller;
 
-import com.booking.booking_mvp.service.BookingService;
+import com.beauty.booking_mvp.service.BookingService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
