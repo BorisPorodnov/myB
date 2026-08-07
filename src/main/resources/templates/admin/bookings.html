@@ -207,6 +207,39 @@
             📋 Записи клиентов
 
         </h2>
+        <div class="row mb-4">
+
+            <div class="col-md-6">
+
+                <input
+                        id="searchInput"
+                        class="form-control form-control-lg"
+                        placeholder="🔍 Поиск по имени или телефону">
+
+            </div>
+
+            <div class="col-md-3">
+
+                <input
+                        type="date"
+                        id="dateFilter"
+                        class="form-control form-control-lg">
+
+            </div>
+
+            <div class="col-md-3">
+
+                <button
+                        class="btn btn-outline-secondary w-100 h-100"
+                        onclick="resetFilters()">
+
+                    Сбросить
+
+                </button>
+
+            </div>
+
+        </div>
 
 
 
@@ -268,7 +301,9 @@
                 <tbody>
 
 
-                <tr th:each="booking : ${bookings}">
+                <tr
+                        th:each="booking : ${bookings}"
+                        th:attr="data-date=${booking.date}">
 
 
                     <td>
@@ -446,5 +481,62 @@
 
 
 </body>
+
+<script>
+
+    const searchInput =
+        document.getElementById("searchInput");
+
+    const dateFilter =
+        document.getElementById("dateFilter");
+
+    function filterRows(){
+
+        const text =
+            searchInput.value.toLowerCase();
+
+        const date =
+            dateFilter.value;
+
+        document
+            .querySelectorAll("tbody tr")
+            .forEach(row=>{
+
+                const rowText =
+                    row.innerText.toLowerCase();
+
+                const rowDate =
+                    row.dataset.date;
+
+                const matchesText =
+                    rowText.includes(text);
+
+                const matchesDate =
+                    date==="" || rowDate===date;
+
+                row.style.display =
+                    matchesText && matchesDate
+                        ? ""
+                        : "none";
+
+            });
+
+    }
+
+    searchInput.addEventListener("keyup",filterRows);
+
+    dateFilter.addEventListener("change",filterRows);
+
+    function resetFilters(){
+
+        searchInput.value="";
+
+        dateFilter.value="";
+
+        filterRows();
+
+    }
+
+</script>
 
 </html>
