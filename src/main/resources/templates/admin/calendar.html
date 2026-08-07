@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="ru"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>
+        Календарь записей Luna
+    </title>
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+
+
+    <style>
+
+
+        body{
+
+            background:#faf7f5;
+
+            font-family:'Segoe UI',sans-serif;
+
+        }
+
+
+
+        .container-main{
+
+            max-width:1400px;
+
+            margin:auto;
+
+        }
+
+
+
+        .header{
+
+            background:linear-gradient(
+                    135deg,
+                    #8b5e83,
+                    #c98ab0
+            );
+
+            color:white;
+
+            padding:35px;
+
+            border-radius:0 0 40px 40px;
+
+            margin-bottom:35px;
+
+        }
+
+
+
+        .header h1{
+
+            font-weight:800;
+
+        }
+
+
+
+        .calendar-box{
+
+            background:white;
+
+            padding:35px;
+
+            border-radius:35px;
+
+            box-shadow:
+                    0 20px 60px rgba(0,0,0,.08);
+
+        }
+
+
+
+        .day-card{
+
+            background:#fff;
+
+            border-radius:25px;
+
+            padding:20px;
+
+            min-height:260px;
+
+            border:1px solid #eee;
+
+            transition:.3s;
+
+        }
+
+
+
+        .day-card:hover{
+
+            transform:translateY(-8px);
+
+            box-shadow:
+                    0 15px 40px rgba(139,94,131,.15);
+
+        }
+
+
+
+        .day-card.busy{
+
+            background:#fff4fa;
+
+            border:2px solid #d47b9b;
+
+        }
+
+
+
+        .day-number{
+
+            font-size:34px;
+
+            font-weight:900;
+
+            color:#8b5e83;
+
+        }
+
+
+
+        .month-name{
+
+            color:#999;
+
+        }
+
+
+
+        .counter{
+
+            background:#8b5e83;
+
+            color:white;
+
+            padding:8px 15px;
+
+            border-radius:30px;
+
+            font-size:13px;
+
+        }
+
+
+
+        .booking{
+
+            background:#faf7fb;
+
+            border-radius:18px;
+
+            padding:12px;
+
+            margin-top:12px;
+
+            border-left:4px solid #8b5e83;
+
+        }
+
+
+
+        .client{
+
+            font-weight:700;
+
+            color:#4d3349;
+
+        }
+
+
+
+        .service{
+
+            color:#8b5e83;
+
+            font-size:14px;
+
+        }
+
+
+
+        .time{
+
+            margin-top:5px;
+
+            color:#555;
+
+            font-weight:600;
+
+        }
+
+
+
+        .status{
+
+            margin-top:8px;
+
+        }
+
+
+
+        .empty{
+
+            color:#aaa;
+
+            margin-top:25px;
+
+        }
+
+
+
+        .details{
+
+            margin-top:40px;
+
+            background:white;
+
+            padding:30px;
+
+            border-radius:30px;
+
+        }
+
+
+
+    </style>
+
+
+</head>
+
+
+
+<body>
+
+
+
+<div class="header">
+
+    <div class="container-main">
+
+
+        <h1>
+
+            📅 Календарь записей Luna
+
+        </h1>
+
+
+        <p>
+
+            Расписание клиентов по дням
+
+        </p>
+
+
+    </div>
+
+</div>
+
+
+
+
+
+<div class="container-main">
+
+
+
+
+
+    <div class="calendar-box">
+
+
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+
+
+            <h2>
+
+<span th:text="${monthName}">
+</span>
+
+                <span th:text="${year}">
+</span>
+
+
+            </h2>
+
+
+
+            <a href="/admin"
+
+               class="btn btn-outline-secondary rounded-pill">
+
+
+                ← Админка
+
+
+            </a>
+
+
+
+        </div>
+
+
+
+
+
+
+
+        <div class="row g-4">
+
+
+
+
+
+            <div class="col-xl-3 col-lg-4 col-md-6"
+
+                 th:each="day : ${days}">
+
+
+
+
+
+                <div class="day-card"
+
+
+                     th:classappend="${bookingsByDay.containsKey(day) ? 'busy' : ''}">
+
+
+
+
+
+                    <div class="d-flex justify-content-between">
+
+
+
+                        <div>
+
+
+                            <div class="day-number"
+
+                                 th:text="${day}">
+
+                            </div>
+
+
+                            <div class="month-name"
+
+                                 th:text="${monthName}">
+
+                            </div>
+
+
+                        </div>
+
+
+
+
+                        <div class="counter"
+
+                             th:if="${bookingsByDay.containsKey(day)}">
+
+
+                            💜
+
+                            <span th:text="${bookingsByDay.get(day).size()}">
+
+</span>
+
+                        </div>
+
+
+
+                    </div>
+
+
+
+
+
+
+
+                    <div th:if="${bookingsByDay.containsKey(day)}">
+
+
+
+
+
+                        <div class="booking"
+
+                             th:each="b : ${bookingsByDay.get(day)}">
+
+
+
+
+
+                            <div class="client">
+
+
+                                👤
+
+                                <span th:text="${b.clientName}">
+
+</span>
+
+
+                            </div>
+
+
+
+
+
+                            <div class="service">
+
+
+                                💅
+
+                                <span th:text="${b.service}">
+
+</span>
+
+
+                            </div>
+
+
+
+
+
+                            <div class="time">
+
+
+                                🕒
+
+                                <span th:text="${b.time}">
+
+</span>
+
+
+                            </div>
+
+
+
+
+
+                            <div class="status">
+
+
+<span class="badge bg-success"
+
+      th:text="${b.status}">
+
+</span>
+
+
+                            </div>
+
+
+
+
+
+                        </div>
+
+
+
+                    </div>
+
+
+
+
+
+
+
+                    <div class="empty"
+
+                         th:unless="${bookingsByDay.containsKey(day)}">
+
+
+                        Нет записей
+
+
+                    </div>
+
+
+
+
+
+
+                </div>
+
+
+
+
+            </div>
+
+
+
+
+        </div>
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+    <div class="details">
+
+
+        <h3>
+
+            👥 Детали дня
+
+        </h3>
+
+
+        <p class="text-muted">
+
+            Выберите дату для просмотра полной информации
+
+        </p>
+
+
+    </div>
+
+
+
+
+
+</div>
+
+
+
+</body>
+
+
+</html>
